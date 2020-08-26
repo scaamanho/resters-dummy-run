@@ -1,6 +1,6 @@
-package io.github.scaamanho.sdr.domain;
+package io.github.scaamanho.sdr.command;
 
-public class RestDummyDTO
+public class RestDummyCmd
 {
 	private Long id;
 

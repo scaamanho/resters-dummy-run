@@ -1,4 +1,4 @@
-package io.github.scaamanho.sdr.model;
+package io.github.scaamanho.sdr.domain;
 
 import javax.persistence.*;
 
