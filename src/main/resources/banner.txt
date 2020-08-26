@@ -1,0 +1,16 @@
+________                              ___            ________                                          ________            _____
+__  ___/______________   ______________( )_______    ___  __ \___  ________ __________ ________  __    ___  __ \_____________  /_
+_____ \_  _ \_  ___/_ | / /  _ \_  ___/|/__  ___/    __  / / /  / / /_  __ `__ \_  __ `__ \_  / / /    __  /_/ /  _ \_  ___/  __/
+____/ //  __/  /   __ |/ //  __/  /      _(__  )     _  /_/ // /_/ /_  / / / / /  / / / / /  /_/ /     _  _, _//  __/(__  )/ /_
+/____/ \___//_/    _____/ \___//_/       /____/      /_____/ \__,_/ /_/ /_/ /_//_/ /_/ /_/_\__, /      /_/ |_| \___//____/ \__/
+                                                                                          /____/
+--------------------------------------------------------------------------------
+ App Name: ${info.app.firstName} - App Version: ${info.app.version}
+ Aplication: ${application.title} - ${application.version} | ${application.formatted-version}
+ App Description: ${info.app.description}
+ Java Source:${info.app.java.source} - Java Target:${info.app.java.target} - Enconding:${info.app.encoding}
+ SpringBoot:${spring-boot.version} | ${spring-boot.formatted-version}
+ SpringBoot Profile:${spring.profiles.active:default} | Flyway Path:${spring.flyway.locations:not_configured}
+ Database:${spring.datasource.url} | Schema: ${spring.jpa.properties.hibernate.default_schema:default}
+  Single Sing On: ${keycloak.auth-server-url}
+--------------------------------------------------------------------------------
