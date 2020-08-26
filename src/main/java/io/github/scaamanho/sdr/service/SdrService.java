@@ -45,16 +45,15 @@ public class SdrService {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
 		JsonNode element = getJSonObjectsFromString(content);
-
 		if(node.isArray())
 			((ArrayNode)node).add(element);
 		else
 			node = element;
-
 		entity.setContent(node.toString());
 		service.createOrUpdateRestDummy(entity);
 		return node;
 	}
+
 	public JsonNode removeElementFromList(Long id, int elementNumber) throws Exception
 	{
 		RestDummy entity = service.getRestDummyById(id);
@@ -63,7 +62,6 @@ public class SdrService {
 			((ArrayNode)node).remove(elementNumber);
 		else
 			node = getJSonObjectsFromString("{}");
-
 		entity.setContent(node.toString());
 		service.createOrUpdateRestDummy(entity);
 		return node;

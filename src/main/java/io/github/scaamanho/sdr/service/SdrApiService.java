@@ -17,7 +17,6 @@ public class SdrApiService {
 	public List<RestDummy> getAllRestDummy()
 	{
 		List<RestDummy> list = repository.findAll();
-
 		if(!list.isEmpty()) {
 			return list;
 		} else {
@@ -28,7 +27,6 @@ public class SdrApiService {
 	public RestDummy getRestDummyById(Long id) throws Exception
 	{
 		Optional<RestDummy> employee = repository.findById(id);
-
 		if(employee.isPresent()) {
 			return employee.get();
 		} else {
@@ -48,11 +46,9 @@ public class SdrApiService {
 			//TODO Remove whitespaces in json y validate json
 			newEntity.setContent(entity.getContent());
 			newEntity = repository.save(newEntity);
-
 			return newEntity;
 		} else {
 			entity = repository.save(entity);
-
 			return entity;
 		}
 	}
