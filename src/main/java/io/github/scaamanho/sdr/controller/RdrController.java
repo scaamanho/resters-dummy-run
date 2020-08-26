@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sdr")
-public class SdrApiController {
+@RequestMapping("/rdr")
+public class RdrController {
 	@Autowired
 	SdrApiService service;
 

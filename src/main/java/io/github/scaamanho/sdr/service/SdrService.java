@@ -18,9 +18,6 @@ public class SdrService {
 		return new ObjectMapper().readTree(content);
 	}
 
-
-
-
 	public String getStringFormJSonObject(Object content) throws Exception
 	{
 		return null;

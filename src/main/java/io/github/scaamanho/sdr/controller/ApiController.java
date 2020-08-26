@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/dummy")
-public class SdrController {
+@RequestMapping("/rdr-api")
+public class ApiController {
 
 
 	@Autowired

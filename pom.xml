@@ -10,10 +10,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.scaamanho</groupId>
-	<artifactId>servers-dummy-rest</artifactId>
+	<artifactId>resters-dummy-run</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>servers-dummy-rest</name>
-	<description>Server's Dummy Rest</description>
+	<name>resters-dummy-run</name>
+	<description>Rester's Dummy Run</description>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -23,16 +23,18 @@
 	</properties>
 
 	<dependencies>
+		<!-- web mvc -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<!-- jpa -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
+		<!-- h2 database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -40,20 +42,14 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-			<version>2.2.5.RELEASE</version><!-- ¿es necesario especificar version? ¿por que no se usa la 2.3.0?-->
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+
+		<!-- thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
 		<!-- Enable actuactors -->
@@ -79,6 +75,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.7.0</version>
 		</dependency>
+		<!-- flyway -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
@@ -90,9 +87,6 @@
 			<version>2.8.5</version>
 		</dependency>
 	</dependencies>
-
-
-
 	<build>
 		<plugins>
 			<plugin>
@@ -100,7 +94,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-
 	</build>
 
 

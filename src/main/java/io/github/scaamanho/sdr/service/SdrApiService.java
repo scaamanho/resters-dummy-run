@@ -30,10 +30,11 @@ public class SdrApiService {
 		if(employee.isPresent()) {
 			return employee.get();
 		} else {
-			throw new Exception("No RestDummy record exist for given id");
+			return new RestDummy();
 		}
 	}
 
+	//TODO SEparar update y create
 	public RestDummy createOrUpdateRestDummy(RestDummy entity) throws Exception
 	{
 		Optional<RestDummy> restDummy = repository.findById(entity.getId());

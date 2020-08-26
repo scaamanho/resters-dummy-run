@@ -22,13 +22,13 @@ public class SwaggerConfig {
 	}
 
 	private Predicate<String> postPaths() {
-		return or(regex("/api/posts.*"), regex("/sdr.*"),
-				regex("/dummy.*"),regex("/actuator.*"));
+		return or(regex("/api/posts.*"), regex("/rdr.*"),
+				regex("/rdr-api.*"),regex("/actuator.*"));
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Server's Dummy Rest API")
-				.description("Server's Dummy Rest for developers")
+		return new ApiInfoBuilder().title("Rester's Dummy Run API")
+				.description("Rester's Dummy Run API for developers")
 				.termsOfServiceUrl("http://github.com/scaamanho")
 				.license("(c) 2020 Santiago Caamaño")
 				.licenseUrl("scaamanho@gmail.com").version("1.0").build();

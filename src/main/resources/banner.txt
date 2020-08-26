@@ -1,16 +1,16 @@
-________                              ___            ________                                          ________            _____
-__  ___/______________   ______________( )_______    ___  __ \___  ________ __________ ________  __    ___  __ \_____________  /_
-_____ \_  _ \_  ___/_ | / /  _ \_  ___/|/__  ___/    __  / / /  / / /_  __ `__ \_  __ `__ \_  / / /    __  /_/ /  _ \_  ___/  __/
-____/ //  __/  /   __ |/ //  __/  /      _(__  )     _  /_/ // /_/ /_  / / / / /  / / / / /  /_/ /     _  _, _//  __/(__  )/ /_
-/____/ \___//_/    _____/ \___//_/       /____/      /_____/ \__,_/ /_/ /_/ /_//_/ /_/ /_/_\__, /      /_/ |_| \___//____/ \__/
-                                                                                          /____/
+    ____               __              _          ____                                         ____
+   / __ \ ___   _____ / /_ ___   _____( )_____   / __ \ __  __ ____ ___   ____ ___   __  __   / __ \ __  __ ____
+  / /_/ // _ \ / ___// __// _ \ / ___/|// ___/  / / / // / / // __ `__ \ / __ `__ \ / / / /  / /_/ // / / // __ \
+ / _, _//  __/(__  )/ /_ /  __// /     (__  )  / /_/ // /_/ // / / / / // / / / / // /_/ /  / _, _// /_/ // / / /
+/_/ |_| \___//____/ \__/ \___//_/     /____/  /_____/ \__,_//_/ /_/ /_//_/ /_/ /_/ \__, /  /_/ |_| \__,_//_/ /_/
+                                                                                  /____/
 --------------------------------------------------------------------------------
- App Name: ${info.app.firstName} - App Version: ${info.app.version}
- Aplication: ${application.title} - ${application.version} | ${application.formatted-version}
- App Description: ${info.app.description}
- Java Source:${info.app.java.source} - Java Target:${info.app.java.target} - Enconding:${info.app.encoding}
- SpringBoot:${spring-boot.version} | ${spring-boot.formatted-version}
- SpringBoot Profile:${spring.profiles.active:default} | Flyway Path:${flyway.locations:db/migration}
- Database:${spring.datasource.url} | Schema: ${spring.jpa.properties.hibernate.default_schema:default}
-  Single Sing On: ${keycloak.auth-server-url}
+App Name: ${info.app.firstName} - App Version: ${info.app.version}
+Aplication: ${application.title} - ${application.version} | ${application.formatted-version}
+App Description: ${info.app.description}
+Java Source:${info.app.java.source} - Java Target:${info.app.java.target} - Enconding:${info.app.encoding}
+SpringBoot:${spring-boot.version} | ${spring-boot.formatted-version}
+SpringBoot Profile:${spring.profiles.active:default} | Flyway Path:${flyway.locations:db/migration}
+Database:${spring.datasource.url} | Schema: ${spring.jpa.properties.hibernate.default_schema:default}
+Single Sing On: ${keycloak.auth-server-url}
 --------------------------------------------------------------------------------

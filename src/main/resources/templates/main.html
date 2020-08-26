@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="/img/sdr_logo100.png">
+
+	<title>Rester's Dummy Run</title>
+
+	<link rel="canonical" href="/">
+
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+	<!-- Custom styles for this template -->
+	<link href="sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="#">
+			<span class="img_logo"><img src="/img/sdr_logo.png" height="40" alt="SDR Logo"></span>
+			<span class="title_top">Rester's Dummy Run</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/swagger-ui.html" target="_blank">Poke It!</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/swagger-ui.html#/api45controller" target="_blank">How APIs are exposed?</a>
+				</li>
+				<!--
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+				-->
+			</ul>
+			<!--
+			<form class="form-inline mt-2 mt-md-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+			-->
+			<a href="/hmi/edit?id=-1" >
+			<button type="button" class="btn btn-primary">Add Rest API</button>
+			</a>
+		</div>
+	</nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+	<h1 class="mt-5">Rest Api Services</h1>
+
+	<table  class="table table-striped">
+		<thead>
+		<tr>
+
+			<th scope="col">Name</th>
+			<th scope="col">Api Path</th>
+			<th scope="col" width="40%">Description</th>
+			<th scope="col" width="1%">View</th>
+			<th scope="col" width="1%">Edit</th>
+			<th scope="col" width="1%">Delete</th>
+		</tr>
+		</thead>
+
+		<tbody>
+		<tr scope="row" th:if="${apis.empty}">
+			<td colspan="2"> No Apis Available </td>
+		</tr>
+		<tr scope="row" th:each="api : ${apis}">
+			<td><span th:text="${api.name}"> Name </span></td>
+			<td><a th:href="@{/rdr-api/{id}(id=${api.id})}" target="_blank">/rdr-api/<span th:text="${api.id}"> Api Path </span></a></td>
+			<td><span th:text="${api.description}"> Description </span></td>
+
+			<td><a th:href="@{/rdr-api/{id}(id=${api.id})}" target="_blank">
+				<span class="badge badge-info">
+			  <svg width="25" height="25" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+					<path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+				</svg>
+				</span>
+			</a></td>
+
+			<td><a th:href="@{/hmi/edit(id=${api.id})}">
+				<span class="badge badge-primary">
+				<svg width="25" height="25" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+					<path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+				</svg>
+				<span>
+			</a></td>
+			<td><a th:href="@{/hmi/delete(id=${api.id})}">
+				<span class="badge badge-danger">
+				<svg width="25" height="25" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+				<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+				</svg>
+				</span>
+			</a></td>
+		</tr>
+		</tbody>
+	</table>
+	<!--
+	<p class="lead">
+		Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.
+	</p>
+	<p>Back to <a href="../sticky-footer/">the default sticky footer</a> minus the navbar.</p>
+	-->
+</main>
+
+<footer class="footer">
+	<div class="container">
+		<div class="container">
+			<span class="text-muted">&copy;2020 Santiago Caamaño</span>
+		</div>
+	</div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
