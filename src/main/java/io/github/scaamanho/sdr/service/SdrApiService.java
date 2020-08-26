@@ -18,10 +18,10 @@ public class SdrApiService {
 	{
 		List<RestDummy> list = repository.findAll();
 
-		if(list.size() > 0) {
+		if(!list.isEmpty()) {
 			return list;
 		} else {
-			return new ArrayList<RestDummy>();
+			return new ArrayList<>();
 		}
 	}
 

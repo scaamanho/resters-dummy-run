@@ -3,7 +3,6 @@ package io.github.scaamanho.sdr.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.scaamanho.sdr.model.RestDummy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class SdrService {
 	{
 		JsonNode node = getAllObjects(id);
 		if(node.isArray())
-			node = (node.size()>elementNumber) ? node = node.get(elementNumber) : null;
+			node = (node.size()>elementNumber) ? node.get(elementNumber) : null;
 		return node;
 	}
 
