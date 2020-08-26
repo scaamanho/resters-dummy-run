@@ -10,9 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping("/dummy")
 public class SdrController {
@@ -30,21 +27,21 @@ public class SdrController {
 	@GetMapping("/{path}/{id}")
 	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") Long path,@PathVariable("id") int id)
 			throws Exception {
-		JsonNode entity = service.getObjectFromList(path,id);//service.getRestDummyById(path);
+		JsonNode entity = service.getObjectFromList(path,id);
 		return new ResponseEntity<JsonNode>(entity, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@PostMapping("/{path}")
-	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") Long path, Object restDummy)
+	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") Long path, String node)
 			throws Exception {
-		//RestDummy updated= service.createOrUpdateRestDummy(restDummy);
-		return new ResponseEntity<JsonNode>(null, new HttpHeaders(), HttpStatus.OK);
+		JsonNode entity = service.addElementToList(path, node);
+		return new ResponseEntity<JsonNode>(entity, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{path}/{id}")
-	public HttpStatus deleteRestDummyById(@PathVariable("path") Long path,@PathVariable("id") Long id)
+	public HttpStatus deleteRestDummyById(@PathVariable("path") Long path,@PathVariable("id") Integer id)
 			throws Exception {
-		//service.deleteRestDummyById(id);
+		service.removeElementFromList(path, id);
 		return HttpStatus.FORBIDDEN;
 	}
 }

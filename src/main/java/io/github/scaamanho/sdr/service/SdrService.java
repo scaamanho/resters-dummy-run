@@ -2,6 +2,8 @@ package io.github.scaamanho.sdr.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.github.scaamanho.sdr.model.RestDummy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,16 +41,32 @@ public class SdrService {
 		return node;
 	}
 
-	public Object addElementToList(String content, String element) throws Exception
+	public JsonNode addElementToList(Long id, String content) throws Exception
 	{
-		//TODO
-		Object listElements= getJSonObjectsFromString(content);
-		return listElements;
+		RestDummy entity = service.getRestDummyById(id);
+		JsonNode node = getJSonObjectsFromString(entity.getContent());
+		JsonNode element = getJSonObjectsFromString(content);
+
+		if(node.isArray())
+			((ArrayNode)node).add(element);
+		else
+			node = element;
+
+		entity.setContent(node.toString());
+		service.createOrUpdateRestDummy(entity);
+		return node;
 	}
-	public Object removeElementFromList(String content,int elementNumber) throws Exception
+	public JsonNode removeElementFromList(Long id, int elementNumber) throws Exception
 	{
-		//TODO
-		Object listElements= getJSonObjectsFromString(content);
-		return listElements;
+		RestDummy entity = service.getRestDummyById(id);
+		JsonNode node = getJSonObjectsFromString(entity.getContent());
+		if(node.isArray())
+			((ArrayNode)node).remove(elementNumber);
+		else
+			node = getJSonObjectsFromString("{}");
+
+		entity.setContent(node.toString());
+		service.createOrUpdateRestDummy(entity);
+		return node;
 	}
 }
