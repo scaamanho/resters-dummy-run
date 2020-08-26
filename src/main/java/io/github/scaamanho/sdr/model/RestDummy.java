@@ -10,13 +10,13 @@ public class RestDummy {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="name", nullable=false, length=64)
+	@Column(name="name", nullable=false, length=255)
 	private String name;
 
 	@Column(name="description", nullable=true, length=255)
 	private String description;
 
-	@Column(name="content", nullable=false, length=2048)
+	@Column(name="content", nullable=false, length=102400)
 	private String content;
 
 	public Long getId() {

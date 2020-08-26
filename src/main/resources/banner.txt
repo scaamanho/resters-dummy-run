@@ -10,7 +10,7 @@ ____/ //  __/  /   __ |/ //  __/  /      _(__  )     _  /_/ // /_/ /_  / / / / /
  App Description: ${info.app.description}
  Java Source:${info.app.java.source} - Java Target:${info.app.java.target} - Enconding:${info.app.encoding}
  SpringBoot:${spring-boot.version} | ${spring-boot.formatted-version}
- SpringBoot Profile:${spring.profiles.active:default} | Flyway Path:${spring.flyway.locations:not_configured}
+ SpringBoot Profile:${spring.profiles.active:default} | Flyway Path:${flyway.locations:db/migration}
  Database:${spring.datasource.url} | Schema: ${spring.jpa.properties.hibernate.default_schema:default}
   Single Sing On: ${keycloak.auth-server-url}
 --------------------------------------------------------------------------------
