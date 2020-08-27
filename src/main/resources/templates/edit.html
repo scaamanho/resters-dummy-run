@@ -14,57 +14,15 @@
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 	<link rel="stylesheet" th:href="@{/css/main.css}"/>
-
-	<!-- Custom styles for this template -->
-	<link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-	<!-- Fixed navbar -->
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-		<a class="navbar-brand" href="#">
-			<span class="img_logo"><img src="/img/sdr_logo.png" height="40" alt="SDR Logo"></span>
-			<span class="title_top">Rester's Dummy Run</span>
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="/swagger-ui.html" target="_blank">Poke It!</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/swagger-ui.html#/api45controller" target="_blank">How APIs are exposed?</a>
-				</li>
-				<!--
-				<li class="nav-item active">
-					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Link</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link disabled" href="#">Disabled</a>
-				</li>
-				-->
-			</ul>
-			<!--
-			<form class="form-inline mt-2 mt-md-0">
-				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
-			-->
-			<button type="button" class="btn btn-primary" >Add Rest API</button>
-		</div>
-	</nav>
-</header>
+<div th:insert="header :: header"></div>
 
 <!-- Begin page content -->
 <main role="main" class="container">
-	<h1 class="mt-5">Editor APIs</h1>
+	<h3 class="mt-5">Editor APIs</h3>
 	<div class="card">
 		<div class="card-body">
 			<div class="col-md-10">
@@ -73,7 +31,7 @@
 						<div class="form-group col-md-8">
 							<label for="id" class="col-form-label">API Path: [rdr-api/&lt;value&gt;]</label>
 							<input type="text" th:field="*{id}" class="form-control"
-										 id="id" placeholder="API Path" />
+										 id="id" placeholder="API Path"/>
 						</div>
 						<div class="form-group col-md-8">
 							<label for="name" class="col-form-label">Name</label>
@@ -88,7 +46,7 @@
 						<div class="form-group col-md-8">
 							<label for="content" class="col-form-label">Json Rest API</label>
 							<textarea th:field="*{content}" class="form-control"
-												id="content" placeholder="[{}]" rows="12"></textarea>
+												id="content" placeholder="[{}]" rows="10"></textarea>
 						</div>
 
 						<div class="col-md-6 col-6">
@@ -105,11 +63,7 @@
 
 </main>
 
-<footer class="footer">
-	<div class="container">
-		<span class="text-muted">&copy;2020 Santiago Caamaño</span>
-	</div>
-</footer>
+<div th:insert="footer :: footer"></div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

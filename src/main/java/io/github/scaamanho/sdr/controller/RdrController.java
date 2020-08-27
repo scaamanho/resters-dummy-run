@@ -1,19 +1,20 @@
 package io.github.scaamanho.sdr.controller;
 
 import io.github.scaamanho.sdr.domain.RestDummy;
-import io.github.scaamanho.sdr.service.SdrApiService;
+import io.github.scaamanho.sdr.service.RdrService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/rdr")
 public class RdrController {
 	@Autowired
-	SdrApiService service;
+	RdrService service;
 
 	@GetMapping
 	public ResponseEntity<List<RestDummy>> getAllRestDummy() {
@@ -22,7 +23,7 @@ public class RdrController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<RestDummy> getRestDummyById(@PathVariable("id") Long id)
+	public ResponseEntity<RestDummy> getRestDummyById(@PathVariable("id") String id)
 			throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
@@ -36,7 +37,7 @@ public class RdrController {
 	}
 
 	@DeleteMapping("/{id}")
-	public HttpStatus deleteRestDummyById(@PathVariable("id") Long id)
+	public HttpStatus deleteRestDummyById(@PathVariable("id") String id)
 			throws Exception {
 		service.deleteRestDummyById(id);
 		return HttpStatus.FORBIDDEN;

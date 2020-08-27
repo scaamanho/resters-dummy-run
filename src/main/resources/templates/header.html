@@ -1,0 +1,36 @@
+<header th:fragment="header">
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+		<a class="navbar-brand" href="/">
+			<img src="/img/sdr_logo.png" height="40" alt="SDR Logo" class="align-self-start mr-3 img_logo">
+			<span class="title_top">Rester's Dummy Run</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+						aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a href="/hmi/edit?id=-1" class="btn btn-primary nalink">Add Rest API</a>
+				</li>
+				<li class="nav-item">
+					<a href="/swagger-ui.html" class="btn btn-warning nalink" target="_blank">Poke It!</a>
+				</li>
+				<li class="nav-item">
+					<a href="/swagger-ui.html#/api45controller" class="btn btn-success nalink" target="_blank">How APIs are
+						exposed?</a>
+				</li>
+				<li class="nav-item">
+					<a href="/h2" class="btn btn-secondary nalink" target="_blank">H2</a>
+				</li>
+			</ul>
+			<form class="form-inline mt-2 mt-md-0" action="/hmi/search" method="post">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" id="search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+
+		</div>
+	</nav>
+</header>

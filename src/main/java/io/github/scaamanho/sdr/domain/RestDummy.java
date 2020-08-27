@@ -1,29 +1,32 @@
 package io.github.scaamanho.sdr.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="REST_DUMMY")
 public class RestDummy {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private String id;
 
-	@Column(name="name", nullable=false, length=255)
+	@Column(name = "name", nullable = false, length = 255)
 	private String name;
 
-	@Column(name="description", nullable=true, length=255)
+	@Column(name = "description", nullable = true, length = 255)
 	private String description;
 
-	@Column(name="content", nullable=false, length=102400)
+	@Column(name = "content", nullable = false, length = 102400)
 	private String content;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

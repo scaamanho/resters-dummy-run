@@ -1,8 +1,7 @@
 package io.github.scaamanho.sdr.command;
 
-public class RestDummyCmd
-{
-	private Long id;
+public class RestDummyCmd {
+	private String id;
 
 	private String name;
 
@@ -10,11 +9,11 @@ public class RestDummyCmd
 
 	private String content;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

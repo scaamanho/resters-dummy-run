@@ -1,7 +1,12 @@
 DROP TABLE IF EXISTS REST_DUMMY;
-CREATE TABLE REST_DUMMY (id INT PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), content VARCHAR(102400));
+CREATE TABLE REST_DUMMY(
+  id          VARCHAR(255) PRIMARY KEY,
+  name        VARCHAR(255),
+  description VARCHAR(255),
+  content     VARCHAR(102400));
 
-INSERT INTO REST_DUMMY (id,name,description,content) VALUES (1, 'TODOs', 'Lista 200 TODOs','[
+INSERT INTO REST_DUMMY(id, name, description, content)
+VALUES ('todo', 'TODOs', 'Lista 200 TODOs', '[
   {
     "userId": 1,
     "id": 1,

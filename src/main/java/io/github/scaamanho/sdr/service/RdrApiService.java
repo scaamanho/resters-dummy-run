@@ -8,42 +8,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SdrService {
+public class RdrApiService {
 
 	@Autowired
-	SdrApiService service;
+	RdrService service;
 
-	public JsonNode getJSonObjectsFromString(String content) throws Exception
-	{
+	public JsonNode getJSonObjectsFromString(String content) throws Exception {
 		return new ObjectMapper().readTree(content);
 	}
 
-	public String getStringFormJSonObject(Object content) throws Exception
-	{
+	public String getStringFormJSonObject(Object content) throws Exception {
 		return null;
 	}
 
-	public JsonNode getAllObjects(Long id) throws Exception
-	{
+	public JsonNode getAllObjects(String id) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		return getJSonObjectsFromString(entity.getContent());
 	}
 
-	public JsonNode getObjectFromList(Long id, int elementNumber) throws Exception
-	{
+	public JsonNode getObjectFromList(String id, int elementNumber) throws Exception {
 		JsonNode node = getAllObjects(id);
-		if(node.isArray())
-			node = (node.size()>elementNumber) ? node.get(elementNumber) : null;
+		if (node.isArray())
+			node = (node.size() > elementNumber) ? node.get(elementNumber) : null;
 		return node;
 	}
 
-	public JsonNode addElementToList(Long id, String content) throws Exception
-	{
+	public JsonNode addElementToList(String id, String content) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
 		JsonNode element = getJSonObjectsFromString(content);
-		if(node.isArray())
-			((ArrayNode)node).add(element);
+		if (node.isArray())
+			((ArrayNode) node).add(element);
 		else
 			node = element;
 		entity.setContent(node.toString());
@@ -51,12 +46,11 @@ public class SdrService {
 		return node;
 	}
 
-	public JsonNode removeElementFromList(Long id, int elementNumber) throws Exception
-	{
+	public JsonNode removeElementFromList(String id, int elementNumber) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
-		if(node.isArray())
-			((ArrayNode)node).remove(elementNumber);
+		if (node.isArray())
+			((ArrayNode) node).remove(elementNumber);
 		else
 			node = getJSonObjectsFromString("{}");
 		entity.setContent(node.toString());

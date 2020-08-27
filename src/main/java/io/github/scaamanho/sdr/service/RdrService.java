@@ -10,24 +10,31 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SdrApiService {
+public class RdrService {
 	@Autowired
 	RestDummyRepository repository;
 
-	public List<RestDummy> getAllRestDummy()
-	{
+	public List<RestDummy> getAllRestDummy() {
 		List<RestDummy> list = repository.findAll();
-		if(!list.isEmpty()) {
+		if (!list.isEmpty()) {
 			return list;
 		} else {
 			return new ArrayList<>();
 		}
 	}
 
-	public RestDummy getRestDummyById(Long id) throws Exception
-	{
+	public List<RestDummy> searchRestDummy(String filter) {
+		List<RestDummy> list = repository.findByNameOrDescriptionContaining(filter, filter);
+		if (!list.isEmpty()) {
+			return list;
+		} else {
+			return new ArrayList<>();
+		}
+	}
+
+	public RestDummy getRestDummyById(String id) throws Exception {
 		Optional<RestDummy> employee = repository.findById(id);
-		if(employee.isPresent()) {
+		if (employee.isPresent()) {
 			return employee.get();
 		} else {
 			return new RestDummy();
@@ -54,12 +61,10 @@ public class SdrApiService {
 		}
 	}
 
-	public void deleteRestDummyById(Long id) throws Exception
-	{
+	public void deleteRestDummyById(String id) throws Exception {
 		Optional<RestDummy> employee = repository.findById(id);
 
-		if(employee.isPresent())
-		{
+		if (employee.isPresent()) {
 			repository.deleteById(id);
 		} else {
 			throw new Exception("No RestDummy record exist for given id");

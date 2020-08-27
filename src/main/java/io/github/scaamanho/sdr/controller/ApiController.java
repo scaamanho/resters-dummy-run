@@ -1,7 +1,7 @@
 package io.github.scaamanho.sdr.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import io.github.scaamanho.sdr.service.SdrService;
+import io.github.scaamanho.sdr.service.RdrApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,30 +14,30 @@ public class ApiController {
 
 
 	@Autowired
-	SdrService service;
+	RdrApiService service;
 
 	@GetMapping("/{path}")
-	public ResponseEntity<JsonNode> getRestDummyContent(@PathVariable("path") Long id) throws Exception{
+	public ResponseEntity<JsonNode> getRestDummyContent(@PathVariable("path") String id) throws Exception {
 		JsonNode node = service.getAllObjects(id);
 		return new ResponseEntity<>(node, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{path}/{id}")
-	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") Long path,@PathVariable("id") int id)
+	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") String path, @PathVariable("id") int id)
 			throws Exception {
-		JsonNode entity = service.getObjectFromList(path,id);
+		JsonNode entity = service.getObjectFromList(path, id);
 		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@PostMapping("/{path}")
-	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") Long path, String node)
+	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") String path, String node)
 			throws Exception {
 		JsonNode entity = service.addElementToList(path, node);
 		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{path}/{id}")
-	public HttpStatus deleteRestDummyById(@PathVariable("path") Long path,@PathVariable("id") Integer id)
+	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") Integer id)
 			throws Exception {
 		service.removeElementFromList(path, id);
 		return HttpStatus.OK;
