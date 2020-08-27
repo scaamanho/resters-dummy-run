@@ -1,10 +1,11 @@
 # TODO
-* trimear json
-* validar json
-* implemntar HMI
-* Usar el enlace por link (unique) en vez de por id. (validacion urls)
-* Capturar excepciones y devolver error en los controles
-* añadir registro de llamadas al api (mantenimiento?)
+* [] trimear json
+* [] validar json
+* [] implemntar HMI
+* [] Usar el enlace por link (unique) en vez de por id. (validacion urls)
+* [] Capturar excepciones y devolver error en los controles
+* [] añadir registro de llamadas al api (mantenimiento?)
+* [x] No cambia el nombre al editar
 
 # Server's Dummy Rest
 ![Server's Dummy Rest](src/main/resources/static/img/sdr_logo.png)

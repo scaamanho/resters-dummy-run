@@ -51,6 +51,7 @@ public class RdrService {
 			//TODO usar Mappers
 			RestDummy newEntity = restDummy.get();
 			newEntity.setContent(entity.getContent());
+			newEntity.setName(entity.getName());
 			newEntity.setDescription(entity.getDescription());
 			//TODO Remove whitespaces in json y validate json
 			newEntity.setContent(entity.getContent());
