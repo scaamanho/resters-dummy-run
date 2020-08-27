@@ -4,6 +4,7 @@ import io.github.scaamanho.sdr.domain.RestDummy;
 import io.github.scaamanho.sdr.repository.RestDummyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +47,8 @@ public class RdrService {
 	{
 		Optional<RestDummy> restDummy = repository.findById(entity.getId());
 
-		if(restDummy.isPresent())
-		{
+		if(restDummy.isPresent()) {
+			//TODO usar Mappers
 			RestDummy newEntity = restDummy.get();
 			newEntity.setContent(entity.getContent());
 			newEntity.setDescription(entity.getDescription());
@@ -56,6 +57,8 @@ public class RdrService {
 			newEntity = repository.save(newEntity);
 			return newEntity;
 		} else {
+			if (StringUtils.isEmpty(entity.getId()))
+				entity.setId(entity.hashCode() + "");
 			entity = repository.save(entity);
 			return entity;
 		}

@@ -1,5 +1,5 @@
 INSERT INTO REST_DUMMY(id, name, description, content)
-VALUES ('albums', 'Albums', 'Lista 100 albums', '[
+VALUES ('albums', 'Albums', 'List with 100 albums', '[
 {
 "userId": 1,
 "id": 1,
