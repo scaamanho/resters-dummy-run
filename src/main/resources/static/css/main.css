@@ -30,6 +30,37 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+
+
+}
+
+.footer
+{
+  vertical-align: top;
+  width: 100%;
+#  background-color:black;
+#  color: white;
+  border-color: black;
+  position: fixed;
+  bottom: 0;
+#  height: 3vh;
+  font-size: smaller;
+}
+
+
+.add-api
+{
+  vertical-align: middle;
+  position: fixed;
+  bottom: 70px;
+  right: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 0px;
+  padding: 0px;
+  z-index: 100;
+  visibility: hidden;
 }
 
 code {
@@ -38,16 +69,20 @@ code {
 
 .title_top
 {
-    margin-top: 20px;
-    font-size: 30px;
-    font-family: Arial
+#    margin-top: 20px;
+    font-size: 35px;
+    font-family: "Knewave";
+    color: #f39c12;
+    padding: 2px;
+    text-shadow: 2px 2px #808080;
 }
 .img_logo
 {
     border-radius: 50%;
     padding: 2px;
 #    background-color: #444;
-    background-color: white;
+#    background-color: white;
+    background-color: #CCC;
 }
 
 
@@ -68,6 +103,13 @@ code {
 }
 
 .nalink{
-margin: 5px;
+   margin: 5px;
    padding: 5px;
+}
+
+.brand {
+    border-radius: 25px;
+    background-color: #3a3a3a;
+    padding: 10px 5px 15px 2px;
+    box-shadow: 2px 2px 0px 0px #AAA
 }
