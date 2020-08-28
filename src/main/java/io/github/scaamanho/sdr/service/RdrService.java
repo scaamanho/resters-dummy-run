@@ -25,7 +25,7 @@ public class RdrService {
 	}
 
 	public List<RestDummy> searchRestDummy(String filter) {
-		List<RestDummy> list = repository.findByNameOrDescriptionContaining(filter, filter);
+		List<RestDummy> list = repository.findByIdContainingIgnoreCaseOrNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(filter, filter, filter);
 		if (!list.isEmpty()) {
 			return list;
 		} else {
@@ -43,26 +43,25 @@ public class RdrService {
 	}
 
 	//TODO SEparar update y create
-	public RestDummy createOrUpdateRestDummy(RestDummy entity) throws Exception
-	{
-		Optional<RestDummy> restDummy = repository.findById(entity.getId());
+	public RestDummy createOrUpdateRestDummy(RestDummy entity) throws Exception {
+		//Set default id
+		if (StringUtils.isEmpty(entity.getId()))
+			entity.setId(entity.hashCode() + "");
+		//Fix id non valid chars
+		entity.setId(entity.getId().replaceAll("/", "_"));
+		//Set defaultName
+		if (StringUtils.isEmpty(entity.getName()))
+			entity.setName(entity.getId());
+		entity = repository.save(entity);
+		return entity;
 
-		if(restDummy.isPresent()) {
-			//TODO usar Mappers
-			RestDummy newEntity = restDummy.get();
-			newEntity.setContent(entity.getContent());
-			newEntity.setName(entity.getName());
-			newEntity.setDescription(entity.getDescription());
-			//TODO Remove whitespaces in json y validate json
-			newEntity.setContent(entity.getContent());
-			newEntity = repository.save(newEntity);
-			return newEntity;
-		} else {
-			if (StringUtils.isEmpty(entity.getId()))
-				entity.setId(entity.hashCode() + "");
-			entity = repository.save(entity);
-			return entity;
-		}
+		/**Optional<RestDummy> restDummy = repository.findById(entity.getId());
+		 if(restDummy.isPresent()) {
+		 entity = repository.save(entity);
+		 } else {
+		 entity = repository.save(entity);
+		 }
+		 return entity;*/
 	}
 
 	public void deleteRestDummyById(String id) throws Exception {
