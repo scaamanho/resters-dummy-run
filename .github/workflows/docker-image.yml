@@ -11,7 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -29,6 +28,3 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASS }}
         repository: scaamanho/rester-dummy-run
         tag_with_ref: true
-
-    - name: Build the Docker image
-      run: docker push resters-dummy-run:latest .
