@@ -20,5 +20,12 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Build the Docker image
-      run: docker build -t resters-dummy-run:latest .
+#    - name: Build the Docker image
+#      run: docker build -t resters-dummy-run:latest .
+    - name: Push to Docker Hub
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_PASS }}
+        repository: scaamanho/rester-dummy-run
+        tag_with_ref: true
