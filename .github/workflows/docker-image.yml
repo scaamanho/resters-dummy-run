@@ -23,7 +23,7 @@ jobs:
 #    - name: Build the Docker image
 #      run: docker build -t resters-dummy-run:latest .
     - name: Push to Docker Hub
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_PASS }}
