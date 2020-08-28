@@ -60,7 +60,7 @@
           <nav class="nav-menu d-none d-lg-block">
             <ul>
               <li class="active"><a href="index.html">Home</a></li>
-              <li><a href="#apis">APIs</a></li>
+              <li><a href="#about">APIs</a></li>
               <li><a href="#deploy">Deploy Server</a></li>
               
               <li><a href="#fork">Fork</a></li>
@@ -121,7 +121,9 @@
                 <p class="animate__animated animate__fadeInUp">In a microservices enviroment some services are not deployed in time.
                   <br>
                   Use <span class="resters-font">Rester's Dummy Run</span> to expose not developed APIs and test your Rest consumers.</p>
-                <p class="animate__animated animate__fadeInUp">Use GET, POST, PUT, DELETE to interact with avaliable data.</p>
+                <p class="animate__animated animate__fadeInUp">Use <span class="badge badge-warning">GET</span>, 
+                  <span class="badge badge-primary">POST</span>, <span class="badge badge-success">PUT</span>,
+                  <span class="badge badge-danger">DELETE</span> methods to interact with avaliable data.</p>
                 <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
               </div>
             </div>
@@ -132,8 +134,7 @@
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Run in Docker</h2>
                 <p class="animate__animated animate__fadeInUp">Use <span class="resters-font">Rester's Dummy Run</span> Docker image to get ready in seconds</p>
-                <p class="animate__animated animate__fadeInUp">Expose APIs with a reverse proxy (NGinx, Traefik, Ingress) or directly using a port.</p>
-                <p class="animate__animated animate__fadeInUp">Spring Boot Actuactors Services enabled.</p>
+                <p class="animate__animated animate__fadeInUp">Expose services with a reverse proxy (NGinx, Traefik, Ingress) or directly using a port.</p>
                 <a href="#featured-services" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
               </div>
             </div>
@@ -204,40 +205,43 @@
       </div>
     </section><!-- End Featured Services Section -->
 
+
     <!-- ======= About Us Section ======= -->
-    <section id="apis">
+    <section id="about">
       <div class="container" data-aos="fade-up">
         
         <header class="section-header">
           <h3>Rester's Dummy Run exposed APIs</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p><span class="resters-font">Rester's Dummy Run</span> Expose the following methods to your Rest API deployed</p>
         </header>
-        <!--
         <div class="row about-cols">
 
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="about-col">
               <div class="img">
-                <img src="assets/img/about-mission.jpg" alt="" class="img-fluid">
+                <img src="assets/img/about-plan.jpg" alt="" class="img-fluid">
                 <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
               </div>
-              <h2 class="title"><a href="#">Our Mission</a></h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
+              <h2 class="title"><a href="#">Custom APIs</a></h2>
+              <ul style="font-family: 'Courier New', Courier, monospace;"> 
+                <li>/api/{path} <span class="badge badge-warning" >[GET]</span></li>
+                <li>/api/{path}/{id} <span class="badge badge-warning">[GET]</span></li>
+                <li>/api/{path} <span class="badge badge-primary">[POST]</span></li>
+                <li>/api/{path} <span class="badge badge-success">[PUT]</span></li>
+                <li>/api/{path}/{id} <span class="badge badge-danger">[DELETE]</span></li>
+              </ul>
             </div>
           </div>
 
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <div class="about-col">
               <div class="img">
-                <img src="assets/img/about-plan.jpg" alt="" class="img-fluid">
+                <img src="assets/img/about-mission.jpg" alt="" class="img-fluid">
                 <div class="icon"><i class="ion-ios-list-outline"></i></div>
               </div>
-              <h2 class="title"><a href="#">Our Plan</a></h2>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-              </p>
+              <h2 class="title"><a href="#">Actuactors</a></h2>
+              <p>All Spring Boot actuactors enpoints exposed even prometheus metrics</p>
+              <p><span class="badge badge-warning">Poke It!</span> and see more in Swagger UI</p>
             </div>
           </div>
 
@@ -247,62 +251,65 @@
                 <img src="assets/img/about-vision.jpg" alt="" class="img-fluid">
                 <div class="icon"><i class="ion-ios-eye-outline"></i></div>
               </div>
-              <h2 class="title"><a href="#">Our Vision</a></h2>
+              <h2 class="title"><a href="#">Manage API</a></h2>
               <p>
-                Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
+                <span class="resters-font">Rester's Dummy Run</span> Internal API to manage exposed services
               </p>
+              <p><span class="badge badge-warning">Poke It!</span> and see more in Swagger UI</p>
             </div>
           </div>
 
         </div>
-      -->
       </div>
     </section><!-- End About Us Section -->
 
     <!-- ======= Services Section ======= -->
-    <section id="deploy"  class="section-bg">
+    <section id="services"  class="section-bg">
       <div class="container" data-aos="fade-up">
         
         <header class="section-header wow fadeInUp">
           <h3>Deploy Rester's Dummy Run</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
+          <p>Deploy <span class="resters-font">Rester's Dummy Run</span> running on Docker</p>
         </header>
-        <!--
+        <div  class="row">
+          
+        </div>
+        
         <div class="row">
 
           <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <h4 class="title"><a href="">Deploy in Docker</a></h4>
+            <p class="description">docker run --rm -p 8080:8080 scaamanho/rester-dummy-run:latest</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Deploy in Docker Compose</a></h4>
+            <p class="description">docker-compose up -d</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Deploy in Swarm</a></h4>
+            <p class="description">docker stack deploy -f=docker-swarm-rdr.yml resters-dummy-run</p>
+          </div>
+          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="ion-ios-analytics-outline"></i></div>
+            <h4 class="title"><a href="">Deploy in Kubernetes</a></h4>
+            <p class="description">helm deploy resters-dummy-rest</p>
           </div>
           <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
             <div class="icon"><i class="ion-ios-bookmarks-outline"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="ion-ios-paper-outline"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="ion-ios-barcode-outline"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <div class="col-lg-4 col-md-6 box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="ion-ios-people-outline"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <h4 class="title"><a href="">Deploy Standalone</a></h4>
+            <p class="description">
+              Choose one option
+              <ul>
+                <li>mvn spring-boot:run</li>
+                <li>java -jar resters-dummy-run.jar</li>
+              </ul>
+             
           </div>
 
         </div>
-        -->
       </div>
     </section><!-- End Services Section -->
 
@@ -310,8 +317,8 @@
     <section id="call-to-action">
       <div class="container text-center" data-aos="zoom-in">
         <h3>Swagger UI</h3>
-        <p> <span class="resters-font">Rester's Dummy Run</span> can open Swagger Rest Client to interact with published APIs. Just Poke It!</p>
-        <a class="cta-btn" href="#">Call To Action</a>
+        <p> <span class="resters-font">Rester's Dummy Run</span> can open Swagger Rest Client to interact with published APIs.</p>
+        <span class="cta-btn" href="#"> Just Poke It!</span>
       </div>
     </section><!-- End Call To Action Section -->
 
@@ -383,7 +390,7 @@
             <h4>Ceo &amp; Founder</h4>
             <p>
               <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-              Thanks to Rester's Dummy Run our Rest Apis has a special bright!
+              Thanks to <span class="resters-font">Rester's Dummy Run</span> our Rest Apis has a special bright!
               <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
@@ -394,7 +401,7 @@
             <h4>Designer</h4>
             <p>
               <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-              Rester´s Dummy Run it's like a religious experiece!
+              <span class="resters-font">Rester's Dummy Run</span> it's like a religious experiece!
               <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
@@ -405,7 +412,7 @@
             <h4>Store Owner</h4>
             <p>
               <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-              With Rester´s Dummy Run my storage never goes out of stock!
+              With <span class="resters-font">Rester's Dummy Run</span> my storage never goes out of stock!
               <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
@@ -416,7 +423,7 @@
             <h4>Freelancer</h4>
             <p>
               <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-              Thanks to Rester´s Dummy Run i can do nothing and facture it!
+              Thanks to <span class="resters-font">Rester's Dummy Run</span> I can do nothing and facture it!
               <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
@@ -427,7 +434,7 @@
             <h4>Entrepreneur</h4>
             <p>
               <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
-              Es como el Scotch Brite. ¡Yo no puedo estar sin el!
+              <span class="resters-font">Rester's Dummy Run</span> es como el Scotch Brite. ¡Yo no puedo estar sin el!
               <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
             </p>
           </div>
@@ -436,18 +443,18 @@
       </div>
     </section><!-- End Testimonials Section -->
 
-     <!-- ======= Our Clients Section ======= -->
-     <section id="fork">
-      <div class="container" data-aos="zoom-in">
+
+    <section id="fork" class="section-bg">
+      <div class="container" data-aos="fade-up">
         
-        <header class="section-header">
+        <div class="section-header">
           <h3>Fork me on Github</h3>
-        </header>
-        <div class="owl-carousel clients-carousel">
-          Only Accept Developers!
+          <p><a href="https://github.com/scaamanho/resters-dummy-run/releases" target="_blank">
+            <button class="btn btn-lg btn-warning">Fork me</button>
+          </a></p>
         </div>
       </div>
-    </section><!-- End Our Clients Section -->
+    </section>
 
     <!-- ======= Contact Section ======= -->
     <section id="download" class="section-bg">
@@ -455,70 +462,10 @@
         
         <div class="section-header">
           <h3>Download</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <p><a href="https://github.com/scaamanho/resters-dummy-run/releases" target="_blank">
+            <button class="btn btn-lg btn-primary">Download</button>
+          </a></p>
         </div>
-        <div>
-          docker pull scaamanho/rester-dummy-run:latest<br>
-          docker run --rm -p 8080:8080 scaamanho/rester-dummy-run:latest
-        </div>
-        <!--
-        <div class="row contact-info">
-
-          <div class="col-md-4">
-            <div class="contact-address">
-              <i class="ion-ios-location-outline"></i>
-              <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-phone">
-              <i class="ion-ios-telephone-outline"></i>
-              <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-email">
-              <i class="ion-ios-email-outline"></i>
-              <h3>Email</h3>
-              <p><a href="mailto:info@example.com">info@example.com</a></p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                <div class="validate"></div>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-              <div class="validate"></div>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-              <div class="validate"></div>
-            </div>
-            <div class="mb-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
-          </form>
-        </div>
-        -->
       </div>
     </section><!-- End Contact Section -->
 
