@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   line-height: 1;
   font-family: "Knewave", sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 3px;
   padding-left: 10px;
   border-left: 4px solid #f39c12;
@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.img_logo
+.imglogo
 {
     border-radius: 50%;
     padding: 2px;
