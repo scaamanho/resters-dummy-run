@@ -1,9 +1,9 @@
-package io.github.scaamanho.sdr.service;
+package io.github.scaamanho.rds.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import io.github.scaamanho.sdr.domain.RestDummy;
+import io.github.scaamanho.rds.domain.RestDummy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package io.github.scaamanho.sdr.command;
+package io.github.scaamanho.rds.command;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

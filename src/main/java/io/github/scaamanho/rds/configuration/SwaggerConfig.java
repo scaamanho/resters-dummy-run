@@ -1,4 +1,4 @@
-package io.github.scaamanho.sdr.configuration;
+package io.github.scaamanho.rds.configuration;
 
 import com.google.common.base.Predicate;
 import org.springframework.context.annotation.Bean;

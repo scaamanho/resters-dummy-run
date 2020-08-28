@@ -1,7 +1,7 @@
-package io.github.scaamanho.sdr.controller;
+package io.github.scaamanho.rds.controller;
 
-import io.github.scaamanho.sdr.domain.RestDummy;
-import io.github.scaamanho.sdr.service.RdrService;
+import io.github.scaamanho.rds.domain.RestDummy;
+import io.github.scaamanho.rds.service.RdrService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

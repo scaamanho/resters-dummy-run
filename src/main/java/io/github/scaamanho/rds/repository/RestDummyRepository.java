@@ -1,6 +1,6 @@
-package io.github.scaamanho.sdr.repository;
+package io.github.scaamanho.rds.repository;
 
-import io.github.scaamanho.sdr.domain.RestDummy;
+import io.github.scaamanho.rds.domain.RestDummy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package io.github.scaamanho.sdr.service;
+package io.github.scaamanho.rds.service;
 
-import io.github.scaamanho.sdr.domain.RestDummy;
-import io.github.scaamanho.sdr.repository.RestDummyRepository;
+import io.github.scaamanho.rds.domain.RestDummy;
+import io.github.scaamanho.rds.repository.RestDummyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;

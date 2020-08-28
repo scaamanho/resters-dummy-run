@@ -1,25 +1,12 @@
-package io.github.scaamanho.sdr.domain;
+package io.github.scaamanho.rds.command;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="REST_DUMMY")
-public class RestDummy {
-
-	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RestDummyCmd {
 	private String id;
 
-	@Column(name = "name", nullable = false, length = 255)
 	private String name;
 
-	@Column(name = "description", nullable = true, length = 255)
 	private String description;
 
-	@Column(name = "content", nullable = false, length = 102400)
 	private String content;
 
 	public String getId() {

@@ -1,7 +1,7 @@
-package io.github.scaamanho.sdr.controller;
+package io.github.scaamanho.rds.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import io.github.scaamanho.sdr.service.RdrApiService;
+import io.github.scaamanho.rds.service.RdrApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
