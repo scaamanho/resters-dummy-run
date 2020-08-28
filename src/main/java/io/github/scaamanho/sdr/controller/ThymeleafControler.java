@@ -1,5 +1,6 @@
 package io.github.scaamanho.sdr.controller;
 
+import io.github.scaamanho.sdr.command.SearchCmd;
 import io.github.scaamanho.sdr.domain.RestDummy;
 import io.github.scaamanho.sdr.service.RdrService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class ThymeleafControler {
@@ -25,6 +27,7 @@ public class ThymeleafControler {
 	@GetMapping("/hmi/edit")
 	public String edit(@RequestParam(name = "id", required = true, defaultValue = "-1") String id, Model model) throws Exception {
 		RestDummy api = service.getRestDummyById(id);
+		model.addAttribute("searchForm", new SearchCmd());
 		model.addAttribute("mode", "update");
 		model.addAttribute("api", api);
 		return "edit";
@@ -37,28 +40,32 @@ public class ThymeleafControler {
 	}
 
 	@PostMapping("/hmi/search")
-	public String search(@RequestParam(name = "search", required = false, defaultValue = "") String search, Model model) {
-		List<RestDummy> apis = service.searchRestDummy(search);
-		model.addAttribute("apis", apis);
-		return "main";
+	public String search(SearchCmd search, Model model) {
+		List<RestDummy> apis = service.searchRestDummy(search.getSearch());
+		return getMainPage(apis, search, model);
 	}
 
 	@PostMapping("/hmi/save")
 	public String save(Model model) {
-		//TODO implementar busqueda
 		return getMainPage(model);
 	}
 
 	@PostMapping("/hmi/update")
 	public String update(RestDummy restDummy, Model model) throws Exception {
 		service.createOrUpdateRestDummy(restDummy);
-		List<RestDummy> apis = service.getAllRestDummy();
-		model.addAttribute("apis", apis);
-		return "main"; //view
+		return getMainPage(model);
 	}
 
 	private String getMainPage(Model model) {
-		List<RestDummy> apis = service.getAllRestDummy();
+		return getMainPage(null, null, model);
+	}
+
+	private String getMainPage(List<RestDummy> apis, SearchCmd search, Model model) {
+		if (Objects.isNull(apis))
+			apis = service.getAllRestDummy();
+		if (Objects.isNull(search))
+			search = new SearchCmd();
+		model.addAttribute("searchForm", search);
 		model.addAttribute("apis", apis);
 		return "main"; //view
 	}
