@@ -28,5 +28,5 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_PASS }}
-        repository: scaamanho/rester-dummy-run
+        repository: scaamanho/resters-dummy-run
         tag_with_ref: true
