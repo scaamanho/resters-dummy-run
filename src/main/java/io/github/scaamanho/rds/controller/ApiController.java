@@ -30,7 +30,7 @@ public class ApiController {
 	}
 
 	@PostMapping("/{path}")
-	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") String path, String node)
+	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") String path, @RequestBody String node)
 			throws Exception {
 		JsonNode entity = service.addElementToList(path, node);
 		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
