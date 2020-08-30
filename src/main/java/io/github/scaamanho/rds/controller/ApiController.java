@@ -30,16 +30,29 @@ public class ApiController {
 	}
 
 	@PostMapping("/{path}")
-	public ResponseEntity<JsonNode> createOrUpdateRestDummy(@PathVariable("path") String path, @RequestBody String node)
+	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody String node)
 			throws Exception {
 		JsonNode entity = service.addElementToList(path, node);
 		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
+	}
+
+	@PutMapping("/{path}")
+	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody String node)
+			throws Exception {
+		//TODO
+		return createRestDummy(path, node);
 	}
 
 	@DeleteMapping("/{path}/{id}")
 	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") Integer id)
 			throws Exception {
 		service.removeElementFromList(path, id);
+		return HttpStatus.OK;
+	}
+
+	@PatchMapping("/{path}")
+	public HttpStatus deleteRestDummyById(@PathVariable("path") String path) throws Exception {
+		//TODO
 		return HttpStatus.OK;
 	}
 }

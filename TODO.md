@@ -15,3 +15,4 @@
 * Monitorizar heads
 * review http://httpbin.org/
 * service rest whoami
+* implementar patch method
