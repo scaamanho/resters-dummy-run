@@ -36,7 +36,7 @@ public class RdrApiService {
 	public JsonNode addElementToList(String id, String content) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
-		JsonNode element = getJSonObjectsFromString(content);
+		JsonNode element = getJSonObjectsFromString(content.toString());
 		if (node.isArray())
 			((ArrayNode) node).add(element);
 		else

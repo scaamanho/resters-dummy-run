@@ -9,8 +9,10 @@
 * [x] enable all spring actuactors
 * [x] metricas prometheus
 * [x] Habilitar busqueda
-* corregir put y post
+* [x] soportar generic json as imput
+* implementar put
 * Avisar de nuevas release
 * Monitorizar heads
 * review http://httpbin.org/
 * service rest whoami
+* implementar patch method
