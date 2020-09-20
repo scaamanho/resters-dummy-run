@@ -10,9 +10,17 @@
 * [x] metricas prometheus
 * [x] Habilitar busqueda
 * [x] soportar generic json as imput
+* implementar busqueda de elementos por parametros (fieldName=value)
 * implementar put
 * Avisar de nuevas release
 * Monitorizar heads
 * review http://httpbin.org/
 * service rest whoami
 * implementar patch method
+
+
+* Implementar Usuarios y Permisos y Api Rest por Usuarios [Mantenimiento usuarios].
+* Colecciones por defecto son del admin y estan disponibles a los usuarios en modo consulta
+* Implementar Autentificacion OAuth2 
+* Cambiar a Postgres?
+* Verificar permisos de borrado de apis en rdr

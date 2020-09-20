@@ -1,0 +1,50 @@
+version: '3' 
+
+networks:
+  traefik-public:
+    external: true
+
+#volumes:
+  # Create a volume to store database
+#  resters_database:
+
+services:
+  resters:
+    image: scaamanho/resters-dummy-run:latest
+#    volumes:
+#      - resters_database:/database
+    networks:
+      - traefik-public
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.2'
+          memory: 250M      
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      labels: 
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        
+        - traefik.http.routers.resters-http.rule=Host(`resters.${DOMAIN:-example.com}`)
+        - traefik.http.routers.resters-http.entrypoints=http
+        - traefik.http.routers.resters-http.middlewares=https-redirect
+        - traefik.http.routers.resters-https.rule=Host(`resters.${DOMAIN:-example.com}`)
+        - traefik.http.routers.resters-https.entrypoints=https
+        
+        - traefik.http.routers.resters-https.tls=true
+        - traefik.http.routers.resters-https.tls.certresolver=le
+        - traefik.http.services.resters.loadbalancer.server.port=8080
