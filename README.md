@@ -1,5 +1,4 @@
 # Rester's Dummy Run
-![Reste's Dummy Run Logo](src/main/resources/static/img/sdr_logo.png)
 
 [TODO]
 
