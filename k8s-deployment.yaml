@@ -1,28 +1,58 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+---
+apiVersion: v1
+kind: ConfigMap
 metadata:
-  name: resters
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "true"
+  name: rester-dummy-run-enviroment
+data:
+  ENABLE_ACTUACTORS: "true"
+  DB_URL: jdbc:h2:file:/tmp/rester-dummy-run-db
+  DB_DRIVER_CLASSNAME: org.h2.Driver
+  DB_DIALECT: org.hibernate.dialect.H2Dialect
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: rester-dummy-run-secret
+type: Opaque
+stringData:
+  DB_USR: sa
+#  DB_PWD:
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rester-dummy-run
 spec:
-  rules:
-    - host: resters.fuf.me
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: resters
-                port:
-                  number: 80
+  selector:
+    matchLabels:
+      app: rester-dummy-run
+  template:
+    metadata:
+      labels:
+        app: rester-dummy-run
+    spec:
+      containers:
+        - name: rester-dummy-run
+          image: scaamanho/resters-dummy-run
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+              name: rester-dummy-run-enviroment
+            - secretRef:
+              name: rester-dummy-run-secret
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: resters
-  labels:
-    app: resters
+  name: rester-dummy-run
 spec:
   ports:
     - name: http
@@ -30,33 +60,25 @@ spec:
       targetPort: 8080
       protocol: TCP
   selector:
-    app: resters
+    app: rester-dummy-run
   type: ClusterIP
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: resters
-  namespace: default
-  labels:
-    app: resters
+  name: rester-dummy-run
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: resters
-  template:
-    metadata:
-      labels:
-        app: resters
-    spec:
-      containers:
-        - name: resters
-          image: scaamanho/resters-dummy-run
-          resources:
-            requests:
-              memory: "100Mi"
-              cpu: "50m"
-            limits:
-              memory: "500Mi"
-              cpu: "200m"
+  rules:
+    - host: rester.minikube.local
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: rester-dummy-run
+                port:
+                  number: 80
