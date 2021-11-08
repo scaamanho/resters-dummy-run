@@ -63,8 +63,9 @@ body > .container {
   visibility: hidden;
 }
 
-code {
-  font-size: 80%;
+.code {
+  font-size: 100%;
+  font-family: Courier;
 }
 
 .title_top
