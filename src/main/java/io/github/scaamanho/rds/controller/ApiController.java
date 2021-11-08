@@ -5,6 +5,7 @@ import io.github.scaamanho.rds.service.RdrApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,41 +17,43 @@ public class ApiController {
 	@Autowired
 	RdrApiService service;
 
-	@GetMapping("/{path}")
+	@GetMapping(value = "/{path}", produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<JsonNode> getRestDummyContent(@PathVariable("path") String id) throws Exception {
-		JsonNode node = service.getAllObjects(id);
-		return new ResponseEntity<>(node, new HttpHeaders(), HttpStatus.OK);
+		return ResponseEntity.ok(service.getAllObjects(id));
 	}
 
-	@GetMapping("/{path}/{id}")
+	@GetMapping(value="/{path}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") String path, @PathVariable("id") int id)
 			throws Exception {
-		JsonNode entity = service.getObjectFromList(path, id);
-		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
+		return ResponseEntity.ok(service.getObjectFromList(path, id));
 	}
 
-	@PostMapping("/{path}")
+	@PostMapping(value="/{path}"
+			, produces = MediaType.APPLICATION_JSON_VALUE
+			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody String node)
 			throws Exception {
-		JsonNode entity = service.addElementToList(path, node);
-		return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
+		return ResponseEntity.ok(service.addElementToList(path, node));
 	}
 
-	@PutMapping("/{path}")
+	@PutMapping(value="/{path}"
+			, produces = MediaType.APPLICATION_JSON_VALUE
+			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody String node)
 			throws Exception {
-		//TODO
 		return createRestDummy(path, node);
 	}
 
-	@DeleteMapping("/{path}/{id}")
+	@DeleteMapping(value="/{path}/{id}",
+			produces = MediaType.APPLICATION_JSON_VALUE
+			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") Integer id)
 			throws Exception {
 		service.removeElementFromList(path, id);
 		return HttpStatus.OK;
 	}
 
-	@PatchMapping("/{path}")
+	@PatchMapping(value="/{path}")
 	public HttpStatus deleteRestDummyById(@PathVariable("path") String path) throws Exception {
 		//TODO
 		return HttpStatus.OK;

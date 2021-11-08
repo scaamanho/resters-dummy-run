@@ -34,9 +34,9 @@ public class RdrService {
 	}
 
 	public RestDummy getRestDummyById(String id) throws Exception {
-		Optional<RestDummy> employee = repository.findById(id);
-		if (employee.isPresent()) {
-			return employee.get();
+		Optional<RestDummy> restDummy = repository.findById(id);
+		if (restDummy.isPresent()) {
+			return restDummy.get();
 		} else {
 			return new RestDummy();
 		}
