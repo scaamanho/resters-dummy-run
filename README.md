@@ -1,6 +1,52 @@
 # Rester's Dummy Run
+[Rester's Dummy Run Main Page](https://scaamanho.github.io/resters-dummy-run/index.html)
 
-[TODO]
+## Deploy Rest APIs in one clik!
+Rester's Dummy Run is a easy management system to deploy Rest APIs with only one click.
+
+Tranform any JSON file in a ready to use Rest API.
+
+## Manage your APIs
+With Rester's Dummy Run you can create, modifiy, duplicate or restore APIS in few clicks.
+
+Access APIs use statistics from Rester's Dummy Run dashboard.
+
+## Test your application's clients
+
+Use Rester's Dummy Run to expose not developed APIs and test your Rest consumers.
+
+Use GET, POST, PUT, DELETE methods to interact with avaliable data.
+
+## Run in Docker
+Use Rester's Dummy Run Docker image to get ready in seconds
+
+Expose services with a reverse proxy (NGinx, Traefik, Ingress) or directly using a port.
+
+## Share APIs with your team
+Share exposed APIs with your team making avaliable to them with Rester's Dummy Run
+
+## How to Use
+
+### Prepare JSON file
+Prepare a JSON file with a register or a list of them
+
+```json
+    {...}
+```
+or 
+```json
+    [{...},...,{...}]
+```
+### Deploy in Rester's Dummy Run
+Choose your API path and deploy JSON file in Rester's Dummy Run engine.
+
+### Consume published API
+Consume your exposed API in Rester's Dummy Run with your prefered Rest client
+
+### Swagger UI
+Rester's Dummy Run can open Swagger Rest Client to interact with published APIs.
+
+
 
 Gestiona todas tus apis Rest en un solo servidor de manera facil y sencilla.
 
@@ -32,7 +78,7 @@ All your APIs will be exposed with the following endpoints:
 ### Docker Image
 
 ```
-docker run --rm -itd -p 8080:8080 rester-dummy-run
+docker run --rm -p 8080:8080 scaamanho/resters-dummy-run:latest
 ```
 ### Docker Compose
 

@@ -4,9 +4,9 @@ networks:
   traefik-public:
     external: true
 
-#volumes:
+volumes:
   # Create a volume to store database
-#  resters_database:
+  resters_database:
 
 services:
   resters:
@@ -19,7 +19,7 @@ services:
 #    enviroment:
 #      DB_DIALECT: org.hibernate.dialect.PostgreSQLDialect
 #      DB_DRIVER_CLASSNAME: org.postgresql.Driver
-#      DB_URL: jdbc:postgresql://localhost:5432/rester
+#      DB_URL: jdbc:postgresql://postgres.example.com:5432/rester
 #      DB_USR: postgres
 #      DB_PWD: postgres
 
