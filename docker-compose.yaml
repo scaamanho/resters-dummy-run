@@ -11,10 +11,26 @@ networks:
 services:
   resters:
     image: scaamanho/resters-dummy-run:latest
-#    volumes:
-#      - resters_database:/database
+    volumes:
+      - resters_database:/database
     networks:
       - traefik-public
+#ENABLE POSTGRES DB
+#    enviroment:
+#      DB_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+#      DB_DRIVER_CLASSNAME: org.postgresql.Driver
+#      DB_URL: jdbc:postgresql://localhost:5432/rester
+#      DB_USR: postgres
+#      DB_PWD: postgres
+
+#ENABLE H2 DB [DEFAULT]
+    enviroment:
+      DB_DIALECT: org.hibernate.dialect.H2Dialect
+      DB_DRIVER_CLASSNAME: org.h2.Driver
+      DB_URL: jdbc:h2:file:/database/resters-dummy-run
+      DB_USR: sa
+      DB_PWD:
+
     logging:
       options:
         max-size: "10m"
@@ -38,13 +54,11 @@ services:
         - traefik.enable=true
         - traefik.docker.network=traefik-public
         - traefik.constraint-label=traefik-public
-        
         - traefik.http.routers.resters-http.rule=Host(`resters.${DOMAIN:-example.com}`)
         - traefik.http.routers.resters-http.entrypoints=http
         - traefik.http.routers.resters-http.middlewares=https-redirect
         - traefik.http.routers.resters-https.rule=Host(`resters.${DOMAIN:-example.com}`)
         - traefik.http.routers.resters-https.entrypoints=https
-        
         - traefik.http.routers.resters-https.tls=true
         - traefik.http.routers.resters-https.tls.certresolver=le
         - traefik.http.services.resters.loadbalancer.server.port=8080

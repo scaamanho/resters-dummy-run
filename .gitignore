@@ -71,7 +71,7 @@ atlassian-ide-plugin.xml
 .idea/
 *.iml
 
-
+C:/
 *.zip
 *.jar
 *.tar
