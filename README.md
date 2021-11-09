@@ -16,13 +16,10 @@ All your APIs will be exposed with the following endpoints:
 
 * `/api/<your_api_path>` `[GET]`
 * `/api/<your_api_path>/<element_number>` `[GET]`
-* `/api/your_api_path` `[POST]`
-* `/api/your_api_path` `[PUT]`
-* `/api/<your_api_path>/<element_number>` `[DETETE]`
+* `/api/<your_api_path>` `[POST]`
+* `/api/<your_api_path>` `[PUT]`
 * `/api/<your_api_path>` `[PATCH]`
-
-## Flyway Init Scripts
-[TODO]
+* `/api/<your_api_path>/<element_number>` `[DETETE]`
 
 ## Actuactor Endpoints
 * `/health`
@@ -30,6 +27,8 @@ All your APIs will be exposed with the following endpoints:
 * `/prometheus`
 
 ## Deployments
+
+See `k8s-deployments.yaml` and `docker-compose.yaml` to deploy in kubernetes and docker
 
 ### Enviroment Variables
 
