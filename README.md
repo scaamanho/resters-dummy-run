@@ -27,6 +27,7 @@ All your APIs will be exposed with the following endpoints:
 ## Actuactor Endpoints
 * `/health`
 * `/info`
+* `/prometheus`
 
 ## Deployments
 
@@ -74,6 +75,7 @@ To use Postgres DB use the following enviroment variables
 DB_DIALECT=org.hibernate.dialect.PostgreSQLDialect
 DB_DRIVER_CLASSNAME=org.postgresql.Driver
 DB_URL=jdbc:postgresql://localhost:5432/rester
+DB_SCHEMA=public
 DB_USR=postgres
 DB_PWD=postgres
 ```
@@ -85,6 +87,7 @@ To use MariaDB use the following enviroment variables
 DB_DIALECT=org.hibernate.dialect.MariaDB103Dialect
 DB_DRIVER_CLASSNAME=org.mariadb.jdbc.Driver
 DB_URL=jdbc:mysql://localhost:3306/rester
+DB_SCHEMA=public
 DB_USR=root
 DB_PWD=password
 ```

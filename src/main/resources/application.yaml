@@ -1,0 +1,70 @@
+application:
+  name: Rester's Dummy Run
+  description: Rester's Dummy Run API for developers
+  version: 1.0
+
+############################
+# Configuracion actuators
+############################
+info:
+  app:
+    firstName: "@project.name@"
+    description: "@project.description@"
+    version: '@project.version@'
+    encoding: '@project.build.sourceEncoding@'
+    java:
+      source: '@java.version@'
+      target: '@java.version@'
+
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: 'info,health,prometheus'
+
+############################
+# LOGS                    ##
+############################
+logging:
+  path: './'
+  file: '@project.name@.log'
+  level:
+    root: 'INFO'
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+
+############################
+# Databse Connection      ##
+############################
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:h2:file:C:/temp/test}
+    driverClassName: ${DB_DRIVER_CLASSNAME:org.h2.Driver}
+    username: ${DB_USR:sa}
+    password: ${DB_PWD:}
+  jpa:
+    database-platform: ${DB_DIALECT:org.hibernate.dialect.H2Dialect}
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      show-sql: ${DEBUG:false}
+    properties:
+      hibernate:
+        default_schema: ${DB_SCHEMA:public}
+        format_sql: ${DEBUG:false}
+        generate_statistics: false
+  h2:
+    console:
+      enabled: ${H2_CONSOLE:false}
+      path: '/h2'
+
+
+############################
+## FLYWAY                 ##
+############################
+flyway:
+  url: ${DB_URL:jdbc:h2:C:/file:temp/test}
+  user: ${DB_USR:sa}
+  password: ${DB_PWD:}
+  enabled: true
