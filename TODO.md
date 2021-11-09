@@ -16,11 +16,12 @@
 * Monitorizar heads
 * review http://httpbin.org/
 * service rest whoami
-* implementar patch method
+* [x] implementar patch method
+* [x] Usar OpenAPI 3,0
 
 
 * Implementar Usuarios y Permisos y Api Rest por Usuarios [Mantenimiento usuarios].
 * Colecciones por defecto son del admin y estan disponibles a los usuarios en modo consulta
 * Implementar Autentificacion OAuth2 
-* Cambiar a Postgres?
+* [x] Cambiar a Postgres?
 * Verificar permisos de borrado de apis en rdr

@@ -24,16 +24,6 @@ public class RdrApiService {
 	}
 
 	/**
-	 * Convert Json to String
-	 * @param content jsonNode
-	 * @return string
-	 * @throws Exception e
-	 */
-	public String getStringFormJSonObject(Object content) throws Exception {
-		return null;
-	}
-
-	/**
 	 * Retrieve all elements from RestAPI and buil a Json Node in memory to work with
 	 * @param id API id
 	 * @return API Contet
@@ -69,17 +59,16 @@ public class RdrApiService {
 	 * @return Element added
 	 * @throws Exception e
 	 */
-	public JsonNode addElementToList(String id, String content) throws Exception {
+	public JsonNode addElementToList(String id, JsonNode content) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
-		JsonNode element = getJSonObjectsFromString(content.toString());
 		if (node.isArray())
-			((ArrayNode) node).add(element);
+			((ArrayNode) node).add(content);
 		else
-			node = element;
+			node = content;
 		entity.setContent(node.toString());
 		service.createOrUpdateRestDummy(entity);
-		return node;
+		return content;
 	}
 
 	/**

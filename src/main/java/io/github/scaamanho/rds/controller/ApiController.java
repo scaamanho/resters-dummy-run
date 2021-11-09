@@ -31,7 +31,7 @@ public class ApiController {
 	@PostMapping(value="/{path}"
 			, produces = MediaType.APPLICATION_JSON_VALUE
 			,consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody String node)
+	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
 		return ResponseEntity.ok(service.addElementToList(path, node));
 	}
@@ -39,8 +39,15 @@ public class ApiController {
 	@PutMapping(value="/{path}"
 			, produces = MediaType.APPLICATION_JSON_VALUE
 			,consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody String node)
+	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
+		return createRestDummy(path, node);
+	}
+
+	@PatchMapping(value="/{path}"
+			, produces = MediaType.APPLICATION_JSON_VALUE
+			,consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<JsonNode> deleteRestDummyById(@PathVariable("path") String path, @RequestBody JsonNode node) throws Exception {
 		return createRestDummy(path, node);
 	}
 
@@ -53,9 +60,5 @@ public class ApiController {
 		return HttpStatus.OK;
 	}
 
-	@PatchMapping(value="/{path}")
-	public HttpStatus deleteRestDummyById(@PathVariable("path") String path) throws Exception {
-		//TODO
-		return HttpStatus.OK;
-	}
+
 }
