@@ -7,6 +7,10 @@ import io.github.scaamanho.rds.domain.RestDummy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Objects;
+
 @Service
 public class RdrApiService {
 
@@ -40,15 +44,14 @@ public class RdrApiService {
 	 * Simulate el get by ID.
 	 * Retrieve the element in API list
 	 * @param id API id
-	 * @param elementNumber number of element in api
+	 * @param elementId number of element in api
 	 * @return API element
 	 * @throws Exception e
 	 */
-	public JsonNode getObjectFromList(String id, int elementNumber) throws Exception {
+	public JsonNode getObjectFromList(String id, String elementId) throws Exception {
 		JsonNode node = getAllObjects(id);
 		if (node.isArray())
-			node = (node.size() > elementNumber) ? node.get(elementNumber) : null;
-		//TODO Filtar por id?
+			node = node.get(getElementIndex(node, elementId));
 		return node;
 	}
 
@@ -71,22 +74,97 @@ public class RdrApiService {
 		return content;
 	}
 
+
 	/**
-	 * Revome an element from API
-	 * @param id API id
-	 * @param elementNumber number of element in api list
-	 * @return element removed
+	 * Replace an element in API List
+	 * @param id api name
+	 * @param content content to replace
+	 * @return content replaced
 	 * @throws Exception e
 	 */
-	public JsonNode removeElementFromList(String id, int elementNumber) throws Exception {
+	public JsonNode replaceElementInList(String id, JsonNode content) throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
 		JsonNode node = getJSonObjectsFromString(entity.getContent());
 		if (node.isArray())
-			((ArrayNode) node).remove(elementNumber);
+		{
+			int index = getElementIndex(node, content.get("id").toString());
+			ArrayNode nodes = (ArrayNode)node;
+			if(index != -1)
+				nodes.remove(index);
+			nodes.add(content);
+		}
+		else
+			node = content;
+		entity.setContent(node.toString());
+		service.createOrUpdateRestDummy(entity);
+		return content;
+	}
+
+	/**
+	 * Revome an element from API
+	 * @param id API id
+	 * @param elementId number of element in api list
+	 * @return element removed
+	 * @throws Exception e
+	 */
+	public JsonNode removeElementFromList(String id, String elementId) throws Exception {
+		RestDummy entity = service.getRestDummyById(id);
+		JsonNode node = getJSonObjectsFromString(entity.getContent());
+
+		if (node.isArray())
+		{
+			((ArrayNode) node).remove(getElementIndex(node,elementId));
+		}
 		else
 			node = getJSonObjectsFromString("{}");
+
 		entity.setContent(node.toString());
 		service.createOrUpdateRestDummy(entity);
 		return node;
+	}
+
+	public JsonNode getElementById(JsonNode nodeParent, String id){
+		JsonNode node=null;
+		if(!nodeParent.isArray())
+			return nodeParent;
+
+		Iterator<JsonNode> iterator = nodeParent.elements();
+		JsonNode nodeTemp;
+		while (iterator.hasNext())
+		{
+			nodeTemp = iterator.next();
+			//Recuperamos objeto por su id
+			if(Objects.nonNull(nodeTemp.get("id")) &&
+					(nodeTemp.get("id").toString().equals(id) ||
+					nodeTemp.get("id").asLong() == Long.parseLong(id)))
+			{
+				node = nodeTemp;
+				break;
+			}
+		}
+		return node;
+	}
+
+	public int getElementIndex(JsonNode nodeParent, String id)
+	{
+		int index = 0;
+		if(!nodeParent.isArray())
+			return index;
+		Iterator<JsonNode> iterator = nodeParent.elements();
+		JsonNode nodeTemp;
+		boolean found =false;
+		while (iterator.hasNext())
+		{
+			nodeTemp = iterator.next();
+			//Recuperamos objeto por su id
+			if( Objects.nonNull(nodeTemp.get("id")) &&
+					(nodeTemp.get("id").toString().equals(id) ||
+							nodeTemp.get("id").asLong() == Long.parseLong(id))) {
+				found =true;
+				break;
+			}
+			index ++;
+		}
+		return found ? index : -1;
 	}
 }

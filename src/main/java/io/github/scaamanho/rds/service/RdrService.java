@@ -35,11 +35,7 @@ public class RdrService {
 
 	public RestDummy getRestDummyById(String id) throws Exception {
 		Optional<RestDummy> restDummy = repository.findById(id);
-		if (restDummy.isPresent()) {
-			return restDummy.get();
-		} else {
-			return new RestDummy();
-		}
+		return restDummy.isPresent()? restDummy.get(): new RestDummy();
 	}
 
 	//TODO SEparar update y create
@@ -54,19 +50,10 @@ public class RdrService {
 			entity.setName(entity.getId());
 		entity = repository.save(entity);
 		return entity;
-
-		/**Optional<RestDummy> restDummy = repository.findById(entity.getId());
-		 if(restDummy.isPresent()) {
-		 entity = repository.save(entity);
-		 } else {
-		 entity = repository.save(entity);
-		 }
-		 return entity;*/
 	}
 
 	public void deleteRestDummyById(String id) throws Exception {
 		Optional<RestDummy> employee = repository.findById(id);
-
 		if (employee.isPresent()) {
 			repository.deleteById(id);
 		} else {

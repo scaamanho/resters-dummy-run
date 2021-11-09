@@ -51,7 +51,7 @@ Rester's Dummy Run can open Swagger Rest Client to interact with published APIs.
 Gestiona todas tus apis Rest en un solo servidor de manera facil y sencilla.
 
 Expone Json Dummys por api rest basadas en un Json de datos permitiendo usar
-las operaciones GET POST PUT DELETE sobre esos datos o conjunto de datos
+las operaciones `GET`, `POST`, `PUT`, `PATCH` y `DELETE` sobre esos datos o conjunto de datos
 
 Posibilidad de configurar multiples APIs en un path determinado
 
@@ -74,11 +74,22 @@ All your APIs will be exposed with the following endpoints:
 
 ## Deployments
 
-See `k8s-deployments.yaml` and `docker-compose.yaml` to deploy in kubernetes and docker
+See [`k8s-deployment.yaml`](k8s-deployment.yaml) and [`docker-compose.yaml`](docker-compose.yaml) to deploy in kubernetes and docker/docker swarm
 
 ### Enviroment Variables
 
-
+Image Default Enviroment Variables:
+```properties
+SERVER_PORT= 8080
+DB_DRIVER_CLASSNAME=org.h2.Driver
+DB_DIALECT=org.hibernate.dialect.H2Dialect
+DB_SCHEMA=public
+DB_URL=jdbc:h2:file:C:/temp/test
+DB_USR=sa
+DB_PWD=
+H2_CONSOLE=false
+DEBUG=false
+```
 
 ### Docker Image
 
@@ -99,7 +110,8 @@ kubectl apply -f k8s-deployment.yaml -n default
 
 ## Using Diferent Databases
 
-By default Rester's Dummy Run uses H2 Database
+By default Rester's Dummy Run uses `H2` Database, but you can
+configure `postgres` or `mariadb`(WIP)
 
 ### H2 DB
 To use H2 DB use the following enviroment variables

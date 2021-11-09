@@ -2,6 +2,15 @@ application:
   name: Rester's Dummy Run
   description: Rester's Dummy Run API for developers
   version: 1.0
+############################
+# Server Configuration
+############################
+server:
+  port: ${SERVER_PORT:8080}
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 10240
 
 ############################
 # Configuracion actuators

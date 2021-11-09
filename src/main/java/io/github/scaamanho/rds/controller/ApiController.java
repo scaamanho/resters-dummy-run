@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,
+		RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.PATCH})
 public class ApiController {
 
 
@@ -26,7 +28,7 @@ public class ApiController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
 	})
-	@Operation(summary = "Get elements from API", tags= {"api"})
+	@Operation(summary = "Get elements from API", tags= {"API"})
 	public ResponseEntity<JsonNode> getRestDummyContent(@PathVariable("path") String id) throws Exception {
 		return ResponseEntity.ok(service.getAllObjects(id));
 	}
@@ -35,8 +37,8 @@ public class ApiController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
 	})
-	@Operation(summary = "Get element from API", tags= {"api"})
-	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") String path, @PathVariable("id") int id)
+	@Operation(summary = "Get element from API", tags= {"API"})
+	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") String path, @PathVariable("id") String id)
 			throws Exception {
 		return ResponseEntity.ok(service.getObjectFromList(path, id));
 	}
@@ -47,7 +49,7 @@ public class ApiController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
 	})
-	@Operation(summary = "Insert element in API", tags= {"api"})
+	@Operation(summary = "Insert element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
 		return ResponseEntity.ok(service.addElementToList(path, node));
@@ -59,10 +61,10 @@ public class ApiController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
 	})
-	@Operation(summary = "Update element in API", tags= {"api"})
+	@Operation(summary = "Update element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
-		return createRestDummy(path, node);
+		return ResponseEntity.ok(service.replaceElementInList(path, node));
 	}
 
 	@PatchMapping(value="/{path}"
@@ -71,23 +73,19 @@ public class ApiController {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
 	})
-	@Operation(summary = "Patch element in API", tags= {"api"})
+	@Operation(summary = "Patch element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> patchRestDummyById(@PathVariable("path") String path, @RequestBody JsonNode node) throws Exception {
-		return createRestDummy(path, node);
+		return ResponseEntity.ok(service.replaceElementInList(path, node));
 	}
 
-	@DeleteMapping(value="/{path}/{id}",
-			produces = MediaType.APPLICATION_JSON_VALUE
-			,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(value="/{path}/{id}")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
-	@Operation(summary = "Delete element from API", tags= {"api"})
-	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") Integer id)
+	@Operation(summary = "Delete element from API", tags= {"API"})
+	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") String id)
 			throws Exception {
 		service.removeElementFromList(path, id);
 		return HttpStatus.OK;
 	}
-
-
 }
