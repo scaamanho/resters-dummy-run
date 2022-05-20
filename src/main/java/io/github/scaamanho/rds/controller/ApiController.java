@@ -26,7 +26,12 @@ public class ApiController {
 
 	@GetMapping(value = "/{path}", produces = MediaType.APPLICATION_JSON_VALUE )
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
+			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
 	@Operation(summary = "Get elements from API", tags= {"API"})
 	public ResponseEntity<JsonNode> getRestDummyContent(@PathVariable("path") String id) throws Exception {
@@ -35,8 +40,14 @@ public class ApiController {
 
 	@GetMapping(value="/{path}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
+			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
+
 	@Operation(summary = "Get element from API", tags= {"API"})
 	public ResponseEntity<JsonNode> getRestDummyContentById(@PathVariable("path") String path, @PathVariable("id") String id)
 			throws Exception {
@@ -47,7 +58,13 @@ public class ApiController {
 			, produces = MediaType.APPLICATION_JSON_VALUE
 			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
+			@ApiResponse(responseCode = "201", content = @Content(schema = @Schema(implementation = JsonNode.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "422", description = "Validation Error", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
 	@Operation(summary = "Insert element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
@@ -59,7 +76,13 @@ public class ApiController {
 			, produces = MediaType.APPLICATION_JSON_VALUE
 			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
+			@ApiResponse(responseCode = "202", content = @Content(schema = @Schema(implementation = JsonNode.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "422", description = "Validation Error", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
 	@Operation(summary = "Update element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
@@ -71,7 +94,13 @@ public class ApiController {
 			, produces = MediaType.APPLICATION_JSON_VALUE
 			,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = JsonNode.class)))
+			@ApiResponse(responseCode = "202", content = @Content(schema = @Schema(implementation = JsonNode.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "422", description = "Validation Error", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
 	@Operation(summary = "Patch element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> patchRestDummyById(@PathVariable("path") String path, @RequestBody JsonNode node) throws Exception {
@@ -80,7 +109,13 @@ public class ApiController {
 
 	@DeleteMapping(value="/{path}/{id}")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = Void.class)))
+			@ApiResponse(responseCode = "204", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "403", description = "Forbidden", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "404", description = "Not Found", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "422", description = "Validation Error", content = @Content(schema = @Schema(implementation = Void.class))),
+			@ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(schema = @Schema(implementation = Void.class)))
 	})
 	@Operation(summary = "Delete element from API", tags= {"API"})
 	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") String id)

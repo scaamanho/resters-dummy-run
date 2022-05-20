@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SDRApplication {
+public class RDRApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(SDRApplication.class, args);
+		SpringApplication.run(RDRApplication.class);
 	}
 }
 

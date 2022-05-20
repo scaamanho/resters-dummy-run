@@ -9,7 +9,7 @@
 * [x] enable all spring actuactors
 * [x] metricas prometheus
 * [x] Habilitar busqueda
-* [x] soportar generic json as imput
+* [x] soportar generic json as input
 * [ ]implementar busqueda de elementos por parametros (fieldName=value)
 * [x]Implementar PUT/PATCH/para actualizar el elemento correcto
 * [x]Implementar GET BY ID para recuperar el elemento correcto
@@ -26,5 +26,8 @@
 * [ ]Implementar Usuarios y Permisos y Api Rest por Usuarios [Mantenimiento usuarios].
 * [ ]Colecciones por defecto son del admin y estan disponibles a los usuarios en modo consulta
 * [ ]Implementar Autentificacion OAuth2 
-* [x] Cambiar a Postgres?
+* [x] Cambiar a Postgres
 * [ ]Verificar permisos de borrado de apis en rdr
+* [x] HTTP Response Codes UPDATE, DELETE, POST, GET
+* [ ] Implementar y documentar API con manejo de errores
+* [ ] Securizar con Oauth2Proxy
