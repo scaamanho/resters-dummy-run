@@ -31,3 +31,4 @@
 * [x] HTTP Response Codes UPDATE, DELETE, POST, GET
 * [ ] Implementar y documentar API con manejo de errores
 * [ ] Securizar con Oauth2Proxy
+* [ ] Implementar metodo OPTIONS, TRACE, HEAD

@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -69,7 +68,7 @@ public class ApiController {
 	@Operation(summary = "Insert element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> createRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
-		return ResponseEntity.ok(service.addElementToList(path, node));
+		return new ResponseEntity<JsonNode>(service.addElementToList(path, node), HttpStatus.CREATED);
 	}
 
 	@PutMapping(value="/{path}"
@@ -87,7 +86,7 @@ public class ApiController {
 	@Operation(summary = "Update element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> uppdateRestDummy(@PathVariable("path") String path, @RequestBody JsonNode node)
 			throws Exception {
-		return ResponseEntity.ok(service.replaceElementInList(path, node));
+		return new ResponseEntity<>(service.replaceElementInList(path, node),HttpStatus.ACCEPTED);
 	}
 
 	@PatchMapping(value="/{path}"
@@ -104,7 +103,7 @@ public class ApiController {
 	})
 	@Operation(summary = "Patch element in API", tags= {"API"})
 	public ResponseEntity<JsonNode> patchRestDummyById(@PathVariable("path") String path, @RequestBody JsonNode node) throws Exception {
-		return ResponseEntity.ok(service.replaceElementInList(path, node));
+		return new ResponseEntity<>(service.replaceElementInList(path, node),HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping(value="/{path}/{id}")
@@ -121,6 +120,6 @@ public class ApiController {
 	public HttpStatus deleteRestDummyById(@PathVariable("path") String path, @PathVariable("id") String id)
 			throws Exception {
 		service.removeElementFromList(path, id);
-		return HttpStatus.OK;
+		return HttpStatus.NO_CONTENT;
 	}
 }

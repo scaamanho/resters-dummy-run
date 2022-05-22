@@ -19,14 +19,14 @@ public class RdrController {
 	RdrService service;
 
 	@GetMapping
-	@Operation(tags= {"internal"})
+	@Operation(tags= {"Inrternal"})
 	public ResponseEntity<List<RestDummy>> getAllRestDummy() {
 		List<RestDummy> list = service.getAllRestDummy();
 		return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	@Operation(tags= {"internal"})
+	@Operation(tags= {"Inrternal"})
 	public ResponseEntity<RestDummy> getRestDummyById(@PathVariable("id") String id)
 			throws Exception {
 		RestDummy entity = service.getRestDummyById(id);
@@ -34,19 +34,19 @@ public class RdrController {
 	}
 
 	@PostMapping
-	@Operation(tags= {"internal"})
+	@Operation(tags= {"Inrternal"})
 	public ResponseEntity<RestDummy> createOrUpdateRestDummy(RestDummy restDummy)
 			throws Exception {
 		RestDummy updated= service.createOrUpdateRestDummy(restDummy);
-		return new ResponseEntity<>(updated, new HttpHeaders(), HttpStatus.OK);
+		return new ResponseEntity<>(updated, new HttpHeaders(), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/{id}")
-	@Operation(tags= {"internal"})
+	@Operation(tags= {"Inrternal"})
 	public HttpStatus deleteRestDummyById(@PathVariable("id") String id)
 			throws Exception {
 		service.deleteRestDummyById(id);
-		return HttpStatus.FORBIDDEN;
+		return HttpStatus.NO_CONTENT;
 	}
 }
 
